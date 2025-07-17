@@ -23,11 +23,10 @@ export default function TodoApp() {
   const [todos, setTodos] = useState<Todo[]>([])
   const [inputValue, setInputValue] = useState("")
   const [filter, setFilter] = useState<FilterType>("all")
-  const [darkMode, setDarkMode] = useState(true)
+  const [darkMode, setDarkMode] = useState(false)
   const [showExpandedForm, setShowExpandedForm] = useState(false)
   const [newTodoPriority, setNewTodoPriority] = useState<"low" | "medium" | "high">("medium")
   const [newTodoDueDate, setNewTodoDueDate] = useState("")
-
   // Load data from localStorage on component mount
   useEffect(() => {
     const savedTodos = localStorage.getItem("todos")
@@ -44,10 +43,18 @@ export default function TodoApp() {
       setTodos(parsedTodos)
     }
 
-    if (savedTheme === "dark") {
-      setDarkMode(true)
-      document.documentElement.classList.add("dark")
-    }
+    // if (savedTheme === "dark") {
+    //   setDarkMode(true)
+    //   document.documentElement.classList.add("dark")
+    // }
+     if (savedTheme === "dark" || savedTheme === null) {
+    // Default to dark if no theme is saved
+    setDarkMode(true)
+    document.documentElement.classList.add("dark")
+  } else {
+    setDarkMode(false)
+    document.documentElement.classList.remove("dark")
+  }
   }, [])
 
   // Save todos to localStorage whenever todos change
