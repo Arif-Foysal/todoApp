@@ -23,7 +23,7 @@ export default function TodoApp() {
   const [todos, setTodos] = useState<Todo[]>([])
   const [inputValue, setInputValue] = useState("")
   const [filter, setFilter] = useState<FilterType>("all")
-  const [darkMode, setDarkMode] = useState(false)
+  const [darkMode, setDarkMode] = useState(true)
   const [showExpandedForm, setShowExpandedForm] = useState(false)
   const [newTodoPriority, setNewTodoPriority] = useState<"low" | "medium" | "high">("medium")
   const [newTodoDueDate, setNewTodoDueDate] = useState("")
